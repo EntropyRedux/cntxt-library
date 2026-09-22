@@ -1,0 +1,22 @@
+{
+  "name": "cntxt-library",
+  "version": "1.0.0",
+  "description": "The community prompt, skill, and template library for CNTXT (ContextPad)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-index.js",
+    "test": "node scripts/validate-index.js"
+  },
+  "keywords": [
+    "cntxt",
+    "contextpad",
+    "prompts",
+    "skills",
+    "templates",
+    "ai",
+    "local-first"
+  ],
+  "author": "CNTXT Community",
+  "license": "MIT"
+}

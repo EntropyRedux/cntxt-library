@@ -1,0 +1,17 @@
+code,name,category,cacheable,client_action,description
+200,OK,Success,true,Render response body,Standard response for successful HTTP requests.
+201,Created,Success,false,Extract Location header,Request fulfilled and resulted in a new resource created.
+204,No Content,Success,false,Clear visual spinners,Request successfully processed but returns no message body.
+301,Moved Permanently,Redirection,true,Update stored bookmarks,Resource has permanently moved to a new URI.
+304,Not Modified,Redirection,true,Serve from local cache,Client cache is still fresh based on ETag or If-Modified-Since.
+400,Bad Request,Client Error,false,Show validation errors,Server cannot process request due to malformed syntax.
+401,Unauthorized,Client Error,false,Prompt login or refresh token,Authentication is required and has failed or not been provided.
+403,Forbidden,Client Error,false,Display permission denied,Server understood request but refuses to authorize it.
+404,Not Found,Client Error,false,Show 404 screen,Origin server did not find a current representation for target.
+409,Conflict,Client Error,false,Trigger merge resolution,Request conflicts with current state of the target resource.
+422,Unprocessable Entity,Client Error,false,Highlight invalid form fields,Semantic errors in request body despite correct syntax.
+429,Too Many Requests,Client Error,false,Backoff exponentially,Client has sent too many requests in a given amount of time.
+500,Internal Server Error,Server Error,false,Log error and show retry,Generic error message when server encounters unexpected condition.
+502,Bad Gateway,Server Error,false,Retry with backoff,Server received invalid response from upstream server.
+503,Service Unavailable,Server Error,false,Inspect Retry-After header,Server is currently unable to handle request due to overload or maintenance.
+504,Gateway Timeout,Server Error,false,Retry idempotent operations,Server acting as gateway did not receive timely upstream response.

@@ -1,0 +1,56 @@
+id: git-interactive-rebase-workflow
+name: Git Interactive Rebase & Conflict Resolution Routine
+description: Multi-step procedural skill for squashing commits, rewording history, and resolving complex git merge conflicts cleanly.
+type: skill
+tags:
+  - git
+  - devops
+  - workflow
+  - cli
+  - rebase
+format: yaml
+author: community
+version: 1.0.0
+verified: false
+
+skill_definition:
+  trigger: "When a developer needs to clean up commit history, squash WIP commits, or resolve rebase merge conflicts."
+  prerequisites:
+    - Clean working directory or stashed changes (`git stash`)
+    - Up-to-date tracking branch (`git fetch origin`)
+  
+  steps:
+    - step: 1
+      name: Safety Backup
+      command: "git branch backup-pre-rebase"
+      description: "Create an immutable local branch pointing to current HEAD before altering history."
+
+    - step: 2
+      name: Initiate Interactive Rebase
+      command: "git rebase -i HEAD~<N> (or git rebase -i origin/main)"
+      description: "Open the interactive rebase todo list in your configured editor."
+      actions:
+        - pick: "Keep commit as-is"
+        - reword: "Keep commit content but edit commit message"
+        - edit: "Pause rebase to amend files or split commit"
+        - squash: "Meld commit into previous commit and combine messages"
+        - fixup: "Meld commit into previous commit, discarding this message"
+        - drop: "Remove commit completely"
+
+    - step: 3
+      name: Conflict Resolution Loop
+      description: "When rebase halts on conflict, resolve files manually."
+      substeps:
+        - check_status: "git status"
+        - inspect_diff: "git diff"
+        - stage_resolved: "git add <resolved-file>"
+        - continue_rebase: "git rebase --continue"
+        - emergency_abort: "git rebase --abort (restores repository to exact starting state)"
+
+    - step: 4
+      name: Verification & Force Push
+      verification_commands:
+        - "git log --oneline -n 10"
+        - "git status"
+      publish_command: "git push --force-with-lease origin <feature-branch>"
+      caution: "Always use --force-with-lease rather than bare --force to prevent overwriting peer commits."

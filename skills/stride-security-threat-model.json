@@ -1,0 +1,65 @@
+{
+  "id": "stride-security-threat-model",
+  "name": "STRIDE Security Threat Modeling Skill",
+  "description": "Structured methodology and taxonomy schema for identifying security threats using Microsoft's STRIDE framework.",
+  "type": "skill",
+  "tags": [
+    "security",
+    "threat-modeling",
+    "stride",
+    "architecture",
+    "schema"
+  ],
+  "format": "json",
+  "author": "community",
+  "version": "1.0.0",
+  "verified": false,
+  "skill_spec": {
+    "framework": "STRIDE",
+    "categories": [
+      {
+        "code": "S",
+        "name": "Spoofing",
+        "question": "Can an attacker pretend to be a valid user, server, or process?",
+        "mitigations": ["Mutual TLS (mTLS)", "Signed JWTs", "HMAC request signatures", "Multi-Factor Authentication"]
+      },
+      {
+        "code": "T",
+        "name": "Tampering",
+        "question": "Can an attacker modify data in transit, on disk, or in memory?",
+        "mitigations": ["TLS 1.3 encryption", "Cryptographic hashes / checksums", "Immutable append-only logs", "Database row signing"]
+      },
+      {
+        "code": "R",
+        "name": "Repudiation",
+        "question": "Can a bad actor deny performing an action without verifiable proof?",
+        "mitigations": ["Secure centralized audit logging", "Non-repudiable digital signatures", "Immutable event tracing"]
+      },
+      {
+        "code": "I",
+        "name": "Information Disclosure",
+        "question": "Can confidential data be exposed to unauthorized parties?",
+        "mitigations": ["Zero-trust network access", "Column-level database encryption", "Strict CORS and CSP headers", "PII data masking"]
+      },
+      {
+        "code": "D",
+        "name": "Denial of Service",
+        "question": "Can a system be overwhelmed to deny service to legitimate users?",
+        "mitigations": ["Rate limiting (Token Bucket)", "DDoS shielding (Cloudflare)", "Backpressure & queue circuit breakers"]
+      },
+      {
+        "code": "E",
+        "name": "Elevation of Privilege",
+        "question": "Can an unprivileged user execute admin actions or escape a sandbox?",
+        "mitigations": ["Role-Based Access Control (RBAC)", "Principle of Least Privilege", "Kernel namespace sandboxing", "Strict input validation"]
+      }
+    ],
+    "execution_workflow": [
+      "1. Deconstruct system data flow diagram (DFD): External Entities, Processes, Data Stores, Data Flows.",
+      "2. Identify all Trust Boundaries across network layers.",
+      "3. Iterate through each STRIDE category per element crossing a trust boundary.",
+      "4. Calculate risk score using DREAD or CVSS v3.",
+      "5. Generate prioritized remediation backlog."
+    ]
+  }
+}

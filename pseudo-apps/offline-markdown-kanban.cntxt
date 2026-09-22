@@ -1,0 +1,45 @@
+---
+id: offline-markdown-kanban
+name: Offline Markdown Kanban Board
+description: Interactive CNTXT pseudo-app document providing local drag-and-drop task tracking embedded in plain markdown.
+type: pseudo-app
+tags: [pseudo-app, kanban, productivity, offline, local-first, interactive]
+author: community
+version: 1.0.0
+verified: false
+---
+
+# 📋 Offline Task Kanban
+
+> **CNTXT Pseudo-App Runtime**: In the CNTXT editor, this document renders an interactive visual Kanban board. The board state synchronizes with the structured markdown lists below.
+
+```cntxt-app:kanban
+columns:
+  - id: backlog
+    title: Backlog
+    limit: 10
+  - id: in_progress
+    title: In Progress
+    limit: 3
+  - id: review
+    title: Review / QA
+    limit: 5
+  - id: done
+    title: Shipped
+```
+
+## 📥 Backlog
+- [ ] Implement client-side tag search caching for instant autocomplete
+- [ ] Add dark mode CSS token overrides for custom user themes
+- [ ] Export document tree to self-contained single-file HTML bundle
+
+## ⏳ In Progress
+- [ ] Refactor markdown parser to support streamable token highlighting
+- [ ] Harden offline local storage quota alerts with graceful eviction
+
+## 🔍 In Review
+- [ ] Audit keyboard shortcuts for window tab navigation (Ctrl+1 through Ctrl+9)
+
+## ✅ Shipped
+- [x] Release initial CNTXT local-first runtime core
+- [x] Implement zero-backend raw GitHub CDN library browsing
